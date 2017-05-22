@@ -1,3 +1,9 @@
+Given(/^existing budgets$/) do |budgets|
+  budgets[0].save
+  # table is a Cucumber::MultilineArgument::DataTable
+  # pending # Write code here that turns the phrase above into concrete actions
+end
+
 When(/^add budget as (month \d+-\d+ and amount \d+)$/) do |budget|
   touch 'Budgets'
   touch 'Add'
@@ -6,8 +12,16 @@ When(/^add budget as (month \d+-\d+ and amount \d+)$/) do |budget|
   touch 'Save'
 end
 
+Then(/^you will not see previous budgets$/) do |budgets|
+  budgets.each do |budget|
+    #wait_for_text_does_not_exist budget.month
+    wait_for_text_does_not_exist budget.amount
+  end
+end
+
 Then(/^you will see all budgets as below$/) do |budgets|
-  budget = budgets[0]
-  wait_for_text budget.month
-  wait_for_text budget.amount
+  budgets.each do |budget|
+    wait_for_text budget.month
+    wait_for_text budget.amount
+  end
 end
