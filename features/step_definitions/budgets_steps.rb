@@ -1,7 +1,7 @@
 Given(/^existing budgets$/) do |budgets|
-  budgets[0].save
-  # table is a Cucumber::MultilineArgument::DataTable
-  # pending # Write code here that turns the phrase above into concrete actions
+  budgets.each do |budget|
+    budget.save
+  end
 end
 
 When(/^add budget as (month \d+-\d+ and amount -?\d+)$/) do |budget|
