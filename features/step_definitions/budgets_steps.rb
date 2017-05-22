@@ -25,3 +25,7 @@ Then(/^you will see all budgets as below$/) do |budgets|
     wait_for_text budget.amount
   end
 end
+
+Then(/^you will see alert message "([^"]*)"$/) do |message|
+  wait_for_text message
+end
