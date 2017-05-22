@@ -4,7 +4,7 @@ Given(/^existing budgets$/) do |budgets|
   # pending # Write code here that turns the phrase above into concrete actions
 end
 
-When(/^add budget as (month \d+-\d+ and amount \d+)$/) do |budget|
+When(/^add budget as (month \d+-\d+ and amount -?\d+)$/) do |budget|
   touch 'Budgets'
   touch 'Add'
   clear_then_enter_text 'month', budget.month
